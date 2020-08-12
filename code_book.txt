@@ -1,7 +1,7 @@
 Feature Selection 
 =================
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 'time' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (time-BodyAcceleration-XYZaxis and time-GravityAcceleration-XYZaxis) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+The features selected for this data set come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 'time' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (time-BodyAcceleration-XYZaxis and time-GravityAcceleration-XYZaxis) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (time-BodyAcceleration-Jerk-XYZaxis and timeBodyAngularVelocity-Jerk-XYZaxis). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (time-BodyAcceleration-Magnitude, time-GravityAcceleration-Magnitude, time-BodyAcceleration-Jerk-Magnitude, time-BodyAngularVelocity-Magnitude, time-BodyAngularVelocity-Jerk-Magnitude). 
 
@@ -32,5 +32,32 @@ The set of variables that were estimated from these signals are:
 
 mean: Mean value
 standardDeviation: Standard deviation value
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. From this variables (subjectIdentifier and activity) were attributed to each reading to denote which subject performed which activity
+
+subjectIdentifier
+activity
+
+The average of each feature was calculated based on the subjectIdentifier and grouped by the activity.
+
+Average-time-BodyAcceleration-XYZaxis
+Average-time-GravityAcceleration-XYZaxis
+Average-time-BodyAcceleration-Jerk-XYZaxis
+Average-time-BodyAngularVelocity-XYZaxis
+Average-time-BodyAngularVelocity-Jerk-XYZaxis
+Average-time-BodyAcceleration-Magnitude
+Average-time-GravityAcceleration-Magnitude
+Average-time-BodyAcceleration-Jerk-Magnitude
+Average-time-BodyAngularVelocity-Magnitude
+Average-time-BodyAngularVelocity-Jerk-Magnitude
+Average-frequency-BodyAcceleration-XYZaxis
+Average-frequency-BodyAcceleration-Jerk-XYZaxis
+Average-frequency-BodyAngularVelocity-XYZaxis
+Average-frequency-BodyAcceleration-Magnitude
+Average-frequency-BodyAcceleration-Jerk-Magnitude
+Average-frequency-BodyAngularVelocity-Magnitude
+Average-frequency-BodyAngularVelocity-Jerk-Magnitude
+
+The average of each feature was calculated based solely on the subjectIdentifier and added to the data set as a new row with the activity value set to "ALL".
 
 The complete list of variables of each feature vector is available in 'features.txt'
