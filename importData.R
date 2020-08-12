@@ -1,7 +1,8 @@
 ################################################################################
 ##                            importData.R                                    ##
 ################################################################################
-## This script reads in the following tables:                                   ##
+## This script reads in the following tables:                                 ##
+## - activity labels                                                          ##
 ## - feature labels,                                                          ##
 ## - test and training data:                                                  ##
 ##              --  data set (X_test and X_train),                            ##
@@ -17,6 +18,9 @@
 library(dplyr)
 # install.packages("tibble")
 library(tibble)
+
+## Read in activity labels
+activities <- tibble::as_tibble(read.table("./data/activity_labels.txt")[,2])
 
 ## Read in feature labels
 features <- tibble::as_tibble(read.table("./data/features.txt")[,2])
