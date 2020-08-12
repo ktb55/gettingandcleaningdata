@@ -45,11 +45,11 @@ Analysis performed in 'run_analysis.R'
 - Updated variable names to be more descriptive using gsub()
 
 - Created a new data table containing independent tidy data:
--- Calculated the average values of all variables by subject and activity
--- Calculated the average values of all variables by subject only
--- Merged these tables together by creating an additional factor level for activity; "ALL"
--- Arranged the table first by subject and then by activity
--- Updated variable names to account for these new values
+    - Calculated the average values of all variables by subject and activity
+    - Calculated the average values of all variables by subject only
+    - Merged these tables together by creating an additional factor level for activity; "ALL"
+    - Arranged the table first by subject and then by activity
+    - Updated variable names to account for these new values
 
 - Wrote tidy data set to 'tidyData.txt' using write.table(..., row.names = FALSE)
 
