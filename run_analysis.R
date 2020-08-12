@@ -17,6 +17,7 @@
 library(dplyr)
 #install.packages("tidyr")
 library(tidyr)
+library(reshape2)
 
 ## Merge train and test data frames
 df <- rbind(train,test)
@@ -44,7 +45,7 @@ colnames(data) <- gsub("[(][)]", "", colnames(data)) # remove '()'
 colnames(data) <- gsub("std", "standardDeviation", colnames(data)) # std -> standardDeviation
 
 colnames(data) <- gsub("--","-", colnames(data)) # remove duplicate '-'
-colnames(data) <- gsub("BodyBody", "Body", colnames(data)) #remove duplicate 'Body'
+colnames(data) <- gsub("BodyBody", "Body", colnames(data)) # remove duplicate 'Body'
 
 colnames(data) <- gsub("X$", "Xaxis", colnames(data)) # X -> Xaxis
 colnames(data) <- gsub("Y$", "Yaxis", colnames(data)) # Y -> Yaxis
@@ -52,8 +53,33 @@ colnames(data) <- gsub("Z$", "Zaxis", colnames(data)) # Z -> Zaxis
 
 ## Create data set with the average of each variable for each activity and each 
 ## subject
+data$subjectIdentifier <- factor(data$subjectIdentifier, levels = 1:30, 
+                                 labels = 1:30)
+# Find averages of variables for each subject by activity
+tidyData <- data %>%
+      group_by(subjectIdentifier, activity) %>%
+      summarise_if(is.numeric, mean)
 
+# Find averages of variables for each subject for all activities        
+subjectAvg <- tidyData %>%
+      select(-activity) %>%
+      group_by(subjectIdentifier) %>%
+      summarise_if(is.numeric, mean)
+subjectAvg$activity <- factor(rep("7", 30), levels = 1:7, 
+                              labels = c(activities[[1]], "ALL"))
+subjectAvg <- subjectAvg %>% select(subjectIdentifier, activity, c(2:67)) # rearrange columns
 
+# Add averages for all activities to tidy data set
+tidyData <- tidyData %>%
+      rbind(subjectAvg) %>%
+      arrange(subjectIdentifier, .by_group = TRUE)
 
+# Rename the variables to account for average taken
+tidyNames <- gsub("^", "Average-", colnames(tidyData))
+tidyNames[[1]] <- colnames(tidyData)[[1]]  
+tidyNames[[2]] <- colnames(tidyData)[[2]]
+colnames(tidyData) <- tidyNames
 
-
+## Write tidy data set to file
+if(!file.exists(".tidy data")){dir.create("./tidy data")}
+write.table(tidyData, "./tidy data/tidyData.txt", row.names = FALSE)
