@@ -12,6 +12,11 @@
 ##    set with the average of each variable for each activity and each        ## 
 ##    subject.                                                                ##
 ################################################################################
+## Libraries
+#install.packages("dplyr")
+library(dplyr)
+#install.packages("tidyr")
+library(tidyr)
 
 ## Merge train and test data frames
 df <- rbind(train,test)
@@ -44,6 +49,10 @@ colnames(data) <- gsub("BodyBody", "Body", colnames(data)) #remove duplicate 'Bo
 colnames(data) <- gsub("X$", "Xaxis", colnames(data)) # X -> Xaxis
 colnames(data) <- gsub("Y$", "Yaxis", colnames(data)) # Y -> Yaxis
 colnames(data) <- gsub("Z$", "Zaxis", colnames(data)) # Z -> Zaxis
+
+## Create data set with the average of each variable for each activity and each 
+## subject
+
 
 
 
