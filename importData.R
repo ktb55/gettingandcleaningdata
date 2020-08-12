@@ -1,7 +1,7 @@
 ################################################################################
 ##                            importData.R                                    ##
 ################################################################################
-## This file reads in the following tables:                                   ##
+## This script reads in the following tables:                                   ##
 ## - feature labels,                                                          ##
 ## - test and training data:                                                  ##
 ##              --  data set (X_test and X_train),                            ##
@@ -36,7 +36,7 @@ colnames(X_test) <- features[[1]]
 colnames(X_train) <- features[[1]]
 colnames(Y_test) <- c("activityLabel")
 colnames(Y_train) <- c("activityLabel")
-colnames(subject_test) <- c("subjectIndentifier")
+colnames(subject_test) <- c("subjectIdentifier")
 colnames(subject_train) <- c("subjectIdentifier")
 
 ## Create test and train data frames
