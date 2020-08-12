@@ -12,3 +12,11 @@
 ##    set with the average of each variable for each activity and each        ## 
 ##    subject.                                                                ##
 ################################################################################
+
+## Merge train and test data frames
+df <- rbind(train,test)
+
+## Extract only mean and standard deviation measurements for each measurement
+df_colnames <- colnames(df)
+df <- df[,c(1,2,grep(".*(mean|std).*", df_colnames))]
+
