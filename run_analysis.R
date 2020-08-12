@@ -25,7 +25,6 @@ df <- rbind(train,test)
 ## Extract only mean and standard deviation measurements for each measurement
 df_colnames <- colnames(df)
 data <- df[,c(1,2,grep(".*(mean|std)[(][)].*", df_colnames))]
-feats <- tibble::as_tibble(colnames(data))
 
 ## Add descriptive activity names
 data$activityLabel <- factor(data$activityLabel, levels = c(1:6), 
