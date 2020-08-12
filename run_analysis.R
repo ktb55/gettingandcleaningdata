@@ -18,5 +18,28 @@ df <- rbind(train,test)
 
 ## Extract only mean and standard deviation measurements for each measurement
 df_colnames <- colnames(df)
-df <- df[,c(1,2,grep(".*(mean|std).*", df_colnames))]
+data <- df[,c(1,2,grep(".*(mean|std)[(][)].*", df_colnames))]
+feats <- tibble::as_tibble(colnames(data))
+
+## Change variables names to reflect more descriptive variable names
+colnames(data) <- gsub("^t", "time-", colnames(data)) # prefix t -> time
+colnames(data) <- gsub("^f", "frequency-", colnames(data)) # prefix f -> frequency
+
+colnames(data) <- gsub("Acc", "Acceleration-", colnames(data)) # Acc -> Acceleration
+colnames(data) <- gsub("Gyro", "AngularVelocity-", colnames(data)) # Gyro -> AngularVelocity
+colnames(data) <- gsub("Mag", "Magnitude", colnames(data)) # Mag -> Magnitude
+colnames(data) <- gsub("Jerk", "Jerk-", colnames(data)) # add hyphen at the end of Jerk
+
+colnames(data) <- gsub("[(][)]", "", colnames(data)) # remove '()'
+colnames(data) <- gsub("std", "standardDeviation", colnames(data)) # std -> standardDeviation
+
+colnames(data) <- gsub("--","-", colnames(data)) # remove duplicate '-'
+colnames(data) <- gsub("BodyBody", "Body", colnames(data)) #remove duplicate 'Body'
+
+colnames(data) <- gsub("X$", "Xaxis", colnames(data)) # X -> Xaxis
+colnames(data) <- gsub("Y$", "Yaxis", colnames(data)) # Y -> Yaxis
+colnames(data) <- gsub("Z$", "Zaxis", colnames(data)) # Z -> Zaxis
+
+
+
 
