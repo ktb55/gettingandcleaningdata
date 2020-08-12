@@ -1,5 +1,5 @@
 Variables
-==========
+=========
 
 "subjectIdentifier" : factor w/ 30 levels from 1 to 30
 "activity" : factor w/ 7 levels "WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING", "ALL"

@@ -60,4 +60,4 @@ Average-frequency-BodyAngularVelocity-Jerk-Magnitude
 
 The average of each feature was calculated based solely on the subjectIdentifier and added to the data set as a new row with the activity value set to "ALL".
 
-The complete list of variables of each feature vector is available in 'features.txt'
+The complete list of variables of each feature vector is available in 'variables.txt'
