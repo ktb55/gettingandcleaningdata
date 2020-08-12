@@ -21,6 +21,11 @@ df_colnames <- colnames(df)
 data <- df[,c(1,2,grep(".*(mean|std)[(][)].*", df_colnames))]
 feats <- tibble::as_tibble(colnames(data))
 
+## Add descriptive activity names
+data$activityLabel <- factor(data$activityLabel, levels = c(1:6), 
+                             labels = activities[[1]])
+data <- rename(data, activity = activityLabel)
+
 ## Change variables names to reflect more descriptive variable names
 colnames(data) <- gsub("^t", "time-", colnames(data)) # prefix t -> time
 colnames(data) <- gsub("^f", "frequency-", colnames(data)) # prefix f -> frequency
